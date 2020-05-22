@@ -10,6 +10,13 @@ class CountryList extends Component {
     };
   }
 
+  static getDerivedStateFromProps = (newProps) => {
+    return {
+      renderedCountries: newProps.renderedCountries,
+      inputValue: newProps.inputValue,
+    };
+  };
+
   renderCountries = () => {
     return this.state.renderedCountries.map((c) => {
       return (
@@ -19,13 +26,6 @@ class CountryList extends Component {
         />
       );
     });
-  };
-
-  static getDerivedStateFromProps = (newProps) => {
-    return {
-      renderedCountries: newProps.renderedCountries,
-      inputValue: newProps.inputValue,
-    };
   };
 
   render() {
