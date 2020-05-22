@@ -2,15 +2,12 @@ import React, { Component } from 'react';
 import CountryList from './CountryList';
 
 class CountryFinder extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      countries: [],
-      renderedCountries: [],
-      isLoaded: false,
-      inputValue: '',
-    };
-  }
+  state = {
+    countries: [],
+    renderedCountries: [],
+    isLoaded: false,
+    inputValue: '',
+  };
 
   componentDidMount() {
     fetch('https://api.covid19api.com/summary')

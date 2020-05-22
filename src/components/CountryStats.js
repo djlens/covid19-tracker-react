@@ -1,11 +1,6 @@
 import React, { Component } from 'react';
 
 class CountryStats extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { ...props.info };
-  }
-
   numberWithCommas = (number) => {
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   };
@@ -15,28 +10,28 @@ class CountryStats extends Component {
       <div className="stats-hidden">
         <span className="label">Total cases confirmed: </span>
         <span className="value">
-          {this.numberWithCommas(this.state.totalConfirmed)}
+          {this.numberWithCommas(this.props.info.TotalConfirmed)}
         </span>
         <span className="label">Total deaths confirmed: </span>
         <span className="value">
-          {this.numberWithCommas(this.state.totalDeaths)}
+          {this.numberWithCommas(this.props.info.TotalDeaths)}
         </span>
         <span className="label">Total recoveries confirmed: </span>
         <span className="value">
-          {this.numberWithCommas(this.state.totalRecovered)}
+          {this.numberWithCommas(this.props.info.TotalRecovered)}
         </span>
 
         <span className="label">New cases confirmed: </span>
         <span className="value">
-          {this.numberWithCommas(this.state.newConfirmed)}
+          {this.numberWithCommas(this.props.info.NewConfirmed)}
         </span>
         <span className="label">New deaths confirmed: </span>
         <span className="value">
-          {this.numberWithCommas(this.state.newDeaths)}
+          {this.numberWithCommas(this.props.info.NewDeaths)}
         </span>
         <span className="label">New recoveries confirmed: </span>
         <span className="value">
-          {this.numberWithCommas(this.state.newRecovered)}
+          {this.numberWithCommas(this.props.info.NewRecovered)}
         </span>
       </div>
     );
