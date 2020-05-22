@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import CountryList from './CountryList';
+import CountryList from '../CountryList/CountryList';
+import styles from './CountryFinder.module.css';
 
 class CountryFinder extends Component {
   state = {
@@ -50,18 +51,20 @@ class CountryFinder extends Component {
 
   render() {
     return (
-      <div className="pannel">
+      <div className={styles.pannel}>
         <input
+          className={styles.pannel__finder}
           type="text"
           value={this.state.inputValue}
-          className="country-input"
           placeholder="Find a country"
           onChange={this.handleChange}
         />
-        <CountryList
-          renderedCountries={this.state.renderedCountries}
-          inputValue={this.state.inputValue}
-        />
+        <div className={styles.pannel__list}>
+          <CountryList
+            renderedCountries={this.state.renderedCountries}
+            inputValue={this.state.inputValue}
+          />
+        </div>
       </div>
     );
   }

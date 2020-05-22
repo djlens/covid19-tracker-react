@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import CountryItem from './CountryItem';
+import CountryItem from '../CountryItem/CountryItem';
+import styles from './CountryList.module.css';
 
 class CountryList extends Component {
   constructor(props) {
@@ -31,9 +32,11 @@ class CountryList extends Component {
   render() {
     if (!this.state.inputValue) return null;
     return this.renderCountries().length === 0 ? (
-      <li>No matches</li>
+      <ul className={styles.country__list}>
+        <li style={{ marginTop: '1em', paddingLeft: '1.5em' }}>No matches</li>
+      </ul>
     ) : (
-      <ul>{this.renderCountries()}</ul>
+      <ul className={styles.country__list}>{this.renderCountries()}</ul>
     );
   }
 }

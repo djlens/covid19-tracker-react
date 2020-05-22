@@ -1,0 +1,13 @@
+.country__item {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 0.6em;
+    padding: 0.7em 1.5em 0.5em;
+    font-size: 1em;
+}
+
+.country__item:hover {
+    background-color: rgb(250, 245, 245);
+    cursor: pointer;
+}

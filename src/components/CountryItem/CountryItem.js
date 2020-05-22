@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import CountryStats from './CountryStats';
+import CountryStats from '../CountryStats/CountryStats';
+import styles from './CountryItem.module.css';
 
 class CountryItem extends Component {
   state = { showStats: false };
@@ -21,7 +22,7 @@ class CountryItem extends Component {
   render() {
     return (
       <li onClick={this.handleShowStats}>
-        <div className="country-hl">
+        <div className={styles.country__item}>
           <span className="country">{this.props.info.Country}</span>
           <span className="total">
             {this.numberWithCommas(this.props.info.TotalConfirmed)}

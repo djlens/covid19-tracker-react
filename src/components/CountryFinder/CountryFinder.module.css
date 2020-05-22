@@ -1,0 +1,25 @@
+.pannel {
+    width: 450px;
+    margin: 2em auto;
+    padding: 2em;
+    height: 90vh;
+    border-radius: 7px;
+    background-color: #fff;
+    opacity: 1;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid red;
+}
+
+.pannel .pannel__finder {
+    width: 92%;
+    text-align: center;
+    font-size: 24px;
+    margin: 0 auto;
+}
+
+.pannel .pannel__list {
+    overflow-y: scroll;
+    height: 90%;
+    margin: 1em 0;
+}
