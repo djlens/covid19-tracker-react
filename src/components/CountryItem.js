@@ -8,7 +8,7 @@ class CountryItem extends Component {
       totalConfirmed: this.props.info.TotalConfirmed,
       totalDeaths: this.props.info.TotalDeaths,
       totalRecovered: this.props.info.TotalRecovered,
-      newCofnirmed: this.props.info.NewConfirmed,
+      newConfirmed: this.props.info.NewConfirmed,
       newDeaths: this.props.info.NewDeaths,
       newRecovered: this.props.info.NewRecovered,
     };
@@ -42,26 +42,32 @@ class CountryItem extends Component {
             {this.numberWithCommas(this.state.totalConfirmed)}
           </span>
         </div>
-        {/* <div className="stats-hidden">
-            <span class="label">Total cases confirmed: </span><span class="value">${numberWithCommas(
-              result.TotalConfirmed
-            )}</span>
-            <span class="label">Total deaths confirmed: </span><span class="value">${numberWithCommas(
-              result.TotalDeaths
-            )}</span>
-            <span class="label">Total recoveries confirmed: </span><span class="value">${numberWithCommas(
-              result.TotalRecovered
-            )}</span>
+        {/* <div className="stats-hidden" style={{ display: 'none' }}>
+          <span className="label">Total cases confirmed: </span>
+          <span className="value">
+            {this.numberWithCommas(this.state.totalConfirmed)}
+          </span>
+          <span className="label">Total deaths confirmed: </span>
+          <span className="value">
+            {this.numberWithCommas(this.state.totalDeaths)}
+          </span>
+          <span className="label">Total recoveries confirmed: </span>
+          <span className="value">
+            {this.numberWithCommas(this.state.totalRecovered)}
+          </span>
 
-            <span class="label">New cases confirmed: </span><span class="value">${numberWithCommas(
-              result.NewConfirmed
-            )}</span>
-            <span class="label">New deaths confirmed: </span><span class="value">${numberWithCommas(
-              result.NewDeaths
-            )}</span>
-            <span class="label">New recoveries confirmed: </span><span class="value">${numberWithCommas(
-              result.NewRecovered
-            )}</span>
+          <span className="label">New cases confirmed: </span>
+          <span className="value">
+            {this.numberWithCommas(this.state.newConfirmed)}
+          </span>
+          <span className="label">New deaths confirmed: </span>
+          <span className="value">
+            {this.numberWithCommas(this.state.newDeaths)}
+          </span>
+          <span className="label">New recoveries confirmed: </span>
+          <span className="value">
+            {this.numberWithCommas(this.state.newRecovered)}
+          </span>
         </div> */}
       </li>
     );

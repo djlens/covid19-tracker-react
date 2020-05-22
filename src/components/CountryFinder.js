@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import CountryItem from './CountryItem';
+import CountryList from './CountryList';
 
 class CountryFinder extends Component {
   constructor(props) {
@@ -33,23 +33,23 @@ class CountryFinder extends Component {
     this.setState({ renderedCountries: filteredCountries });
   };
 
-  renderCountries = () => {
-    let renderedCountries;
-    if (!this.state.inputValue) {
-      renderedCountries = '';
-    } else {
-      renderedCountries = this.state.renderedCountries.map((c) => {
-        return (
-          <CountryItem
-            key={this.state.renderedCountries.indexOf(c) + 1}
-            info={c}
-          />
-        );
-      });
-    }
+  // renderCountries = () => {
+  //   let renderedCountries;
+  //   if (!this.state.inputValue) {
+  //     renderedCountries = '';
+  //   } else {
+  //     renderedCountries = this.state.renderedCountries.map((c) => {
+  //       return (
+  //         <CountryItem
+  //           key={this.state.renderedCountries.indexOf(c) + 1}
+  //           info={c}
+  //         />
+  //       );
+  //     });
+  //   }
 
-    return renderedCountries;
-  };
+  //   return renderedCountries;
+  // };
 
   render() {
     return (
@@ -61,7 +61,10 @@ class CountryFinder extends Component {
           placeholder="Find a country"
           onChange={this.handleChange}
         />
-        <ul>{this.renderCountries()}</ul>
+        <CountryList
+          renderedCountries={this.state.renderedCountries}
+          inputValue={this.state.inputValue}
+        />
       </div>
     );
   }
