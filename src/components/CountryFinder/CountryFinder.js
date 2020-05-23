@@ -3,20 +3,12 @@ import CountryList from '../CountryList/CountryList';
 import styles from './CountryFinder.module.css';
 
 class CountryFinder extends Component {
-  state = {
-    countries: [],
-    renderedCountries: [],
-    isLoaded: false,
-    inputValue: '',
-  };
-
-  componentDidMount() {
-    fetch('https://api.covid19api.com/summary')
-      .then((response) => response.json())
-      .then((json) => {
-        json.Countries.forEach((c) => (c.key = json.Countries.indexOf(c) + 1));
-        this.setState({ countries: json.Countries, isLoaded: true });
-      });
+  constructor(props) {
+    super(props);
+    this.state = {
+      renderedCountries: props.countries,
+      inputValue: '',
+    };
   }
 
   handleChange = (event) => {
@@ -24,30 +16,12 @@ class CountryFinder extends Component {
   };
 
   findCountries = () => {
-    const filteredCountries = this.state.countries.filter((country) => {
+    const filteredCountries = this.props.countries.filter((country) => {
       const exp = new RegExp(this.state.inputValue, 'gi');
       return country.Country.match(exp);
     });
     this.setState({ renderedCountries: filteredCountries });
   };
-
-  // renderCountries = () => {
-  //   let renderedCountries;
-  //   if (!this.state.inputValue) {
-  //     renderedCountries = '';
-  //   } else {
-  //     renderedCountries = this.state.renderedCountries.map((c) => {
-  //       return (
-  //         <CountryItem
-  //           key={this.state.renderedCountries.indexOf(c) + 1}
-  //           info={c}
-  //         />
-  //       );
-  //     });
-  //   }
-
-  //   return renderedCountries;
-  // };
 
   render() {
     return (

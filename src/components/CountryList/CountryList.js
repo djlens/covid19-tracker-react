@@ -6,7 +6,7 @@ class CountryList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      renderedCountries: [...props.renderedCountries],
+      renderedCountries: props.renderedCountries,
       inputValue: props.inputValue,
     };
   }
@@ -33,7 +33,6 @@ class CountryList extends Component {
   };
 
   render() {
-    if (!this.state.inputValue) return null;
     return this.renderCountries().length === 0 ? (
       <ul className={styles.country__list}>
         <li style={{ marginTop: '1em', paddingLeft: '1.5em' }}>No matches</li>
