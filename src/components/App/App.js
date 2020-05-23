@@ -13,19 +13,25 @@ class App extends Component {
       .then((response) => response.json())
       .then((json) => {
         this.setState({
-          totalCases: json['Global'].TotalConfirmed,
-          data: {
-            datasets: [
-              {
-                data: [
-                  json['Global'].TotalDeaths,
-                  json['Global'].TotalRecovered,
-                ],
-                backgroundColor: ['#CB5C5C', '#69D274'],
-              },
-            ],
+          doughnutData: {
+            totalCases: json['Global'].TotalConfirmed,
 
-            labels: ['Total deaths', 'Total recovered'],
+            data: {
+              datasets: [
+                {
+                  data: [
+                    json['Global'].TotalDeaths,
+                    json['Global'].TotalRecovered,
+                    json['Global'].TotalConfirmed -
+                      json['Global'].TotalDeaths -
+                      json['Global'].TotalRecovered,
+                  ],
+                  backgroundColor: ['#CB5C5C', '#69D274', '#DEDB71'],
+                },
+              ],
+
+              labels: ['Total deaths', 'Total recovered', 'Active'],
+            },
           },
           countries: json.Countries,
           isLoading: false,
@@ -33,14 +39,42 @@ class App extends Component {
       });
   }
 
-  handleCountryChoice = (country) => {};
+  handleCountryChoice = (country) => {
+    this.setState({
+      doughnutData: {
+        totalCases: this.state.countries[country].TotalConfirmed,
+        data: {
+          datasets: [
+            {
+              data: [
+                this.state.countries[country].TotalDeaths,
+                this.state.countries[country].TotalRecovered,
+                this.state.countries[country].TotalConfirmed -
+                  this.state.countries[country].TotalDeaths -
+                  this.state.countries[country].TotalRecovered,
+              ],
+              backgroundColor: ['#CB5C5C', '#69D274', '#DEDB71'],
+            },
+          ],
+
+          labels: ['Total deaths', 'Total recovered', 'Active'],
+        },
+      },
+    });
+  };
 
   render() {
     if (!this.state.isLoading) {
       return (
         <div className="app">
-          <CountryFinder countries={this.state.countries} />
-          <Doughnut data={this.state.data} totalCases={this.state.totalCases} />
+          <CountryFinder
+            countries={this.state.countries}
+            onCountryChoice={this.handleCountryChoice}
+          />
+          <Doughnut
+            data={this.state.doughnutData.data}
+            totalCases={this.state.doughnutData.totalCases}
+          />
         </div>
       );
     } else return null;

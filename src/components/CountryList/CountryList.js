@@ -27,6 +27,8 @@ class CountryList extends Component {
           totalConfirmed={c.TotalConfirmed}
           inputValue={this.state.inputValue}
           countryCode={c.CountryCode}
+          onCountryChoice={this.props.onCountryChoice}
+          index={c.index}
         />
       );
     });

@@ -6,7 +6,10 @@ class CountryFinder extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      renderedCountries: props.countries,
+      renderedCountries: props.countries.map((country, index) => {
+        country.index = index;
+        return country;
+      }),
       inputValue: '',
     };
   }
@@ -37,6 +40,7 @@ class CountryFinder extends Component {
           <CountryList
             renderedCountries={this.state.renderedCountries}
             inputValue={this.state.inputValue}
+            onCountryChoice={this.props.onCountryChoice}
           />
         </div>
       </div>

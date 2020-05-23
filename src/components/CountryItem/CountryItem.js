@@ -24,7 +24,7 @@ class CountryItem extends Component {
 
   render() {
     return (
-      <li>
+      <li onClick={() => this.props.onCountryChoice(this.props.index)}>
         <div className={styles.country__item}>
           <div>
             {this.props.countryName}
