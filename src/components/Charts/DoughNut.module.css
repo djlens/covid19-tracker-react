@@ -1,0 +1,15 @@
+.chart {
+    border: 1px solid rgb(207, 206, 206);
+    border-radius: 7px;
+    height: fit-content;
+    width: fit-content;
+    padding: 1em 0 2em;
+    font-family: 'Montserrat', sans-serif;
+    margin: 2em 0;
+}
+
+.chart p {
+    width: fit-content;
+    margin: 1em auto 0;
+    font-size: 1.3em;
+}

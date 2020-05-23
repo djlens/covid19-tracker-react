@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import CountryStats from '../CountryStats/CountryStats';
 import styles from './CountryItem.module.css';
 import ReactCountryFlag from 'react-country-flag';
 
@@ -8,16 +7,6 @@ class CountryItem extends Component {
 
   numberWithCommas = (number) => {
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-  };
-
-  handleShowStats = () => {
-    this.setState({ showStats: !this.state.showStats });
-  };
-
-  showStats = () => {
-    return this.state.showStats ? (
-      <CountryStats info={this.props.info} />
-    ) : null;
   };
 
   // renderName = () => {
@@ -35,19 +24,18 @@ class CountryItem extends Component {
 
   render() {
     return (
-      <li onClick={this.handleShowStats}>
+      <li>
         <div className={styles.country__item}>
           <div>
-            {this.props.info.Country}
+            {this.props.countryName}
             <ReactCountryFlag
               style={{ marginLeft: '0.5em' }}
               className="emojiFlag"
-              countryCode={this.props.info.CountryCode}
+              countryCode={this.props.countryCode}
             />
           </div>
-          <span>{this.numberWithCommas(this.props.info.TotalConfirmed)}</span>
+          <span>{this.numberWithCommas(this.props.totalConfirmed)}</span>
         </div>
-        {this.showStats()}
       </li>
     );
   }

@@ -23,8 +23,10 @@ class CountryList extends Component {
       return (
         <CountryItem
           key={this.state.renderedCountries.indexOf(c) + 1}
-          info={c}
+          countryName={c.Country}
+          totalConfirmed={c.TotalConfirmed}
           inputValue={this.state.inputValue}
+          countryCode={c.CountryCode}
         />
       );
     });
