@@ -24,6 +24,7 @@ class CountryList extends Component {
         <CountryItem
           key={this.state.renderedCountries.indexOf(c) + 1}
           info={c}
+          inputValue={this.state.inputValue}
         />
       );
     });

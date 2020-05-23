@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import CountryStats from '../CountryStats/CountryStats';
 import styles from './CountryItem.module.css';
+import ReactCountryFlag from 'react-country-flag';
 
 class CountryItem extends Component {
   state = { showStats: false };
@@ -19,14 +20,32 @@ class CountryItem extends Component {
     ) : null;
   };
 
+  // renderName = () => {
+  //   return (
+  //     <span>
+  //       {this.props.info.Country.replace(
+  //         this.props.inputValue,
+  //         <span className="country__item--highlight">
+  //           {this.props.inputValue}
+  //         </span>
+  //       )}
+  //     </span>
+  //   );
+  // };
+
   render() {
     return (
       <li onClick={this.handleShowStats}>
         <div className={styles.country__item}>
-          <span className="country">{this.props.info.Country}</span>
-          <span className="total">
-            {this.numberWithCommas(this.props.info.TotalConfirmed)}
-          </span>
+          <div>
+            {this.props.info.Country}
+            <ReactCountryFlag
+              style={{ marginLeft: '0.5em' }}
+              className="emojiFlag"
+              countryCode={this.props.info.CountryCode}
+            />
+          </div>
+          <span>{this.numberWithCommas(this.props.info.TotalConfirmed)}</span>
         </div>
         {this.showStats()}
       </li>

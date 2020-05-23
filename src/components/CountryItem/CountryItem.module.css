@@ -11,3 +11,7 @@
     background-color: rgb(250, 245, 245);
     cursor: pointer;
 }
+
+.country__item--highlight {
+    text-decoration: underline;
+}
