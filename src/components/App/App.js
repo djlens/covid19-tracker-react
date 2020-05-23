@@ -12,27 +12,31 @@ class App extends Component {
     fetch('https://api.covid19api.com/summary')
       .then((response) => response.json())
       .then((json) => {
+        json.Countries.unshift({
+          Country: 'Global',
+          TotalDeaths: json['Global'].TotalDeaths,
+          TotalRecovered: json['Global'].TotalRecovered,
+          TotalConfirmed: json['Global'].TotalConfirmed,
+        });
         this.setState({
           doughnutData: {
             totalCases: json['Global'].TotalConfirmed,
-
-            data: {
-              datasets: [
-                {
-                  data: [
-                    json['Global'].TotalDeaths,
+            datasets: [
+              {
+                data: [
+                  json['Global'].TotalDeaths,
+                  json['Global'].TotalRecovered,
+                  json['Global'].TotalConfirmed -
+                    json['Global'].TotalDeaths -
                     json['Global'].TotalRecovered,
-                    json['Global'].TotalConfirmed -
-                      json['Global'].TotalDeaths -
-                      json['Global'].TotalRecovered,
-                  ],
-                  backgroundColor: ['#CB5C5C', '#69D274', '#DEDB71'],
-                },
-              ],
+                ],
+                backgroundColor: ['#CB5C5C', '#69D274', '#DEDB71'],
+              },
+            ],
 
-              labels: ['Total deaths', 'Total recovered', 'Active'],
-            },
+            labels: ['Total deaths', 'Total recovered', 'Active'],
           },
+
           countries: json.Countries,
           isLoading: false,
         });
@@ -43,22 +47,20 @@ class App extends Component {
     this.setState({
       doughnutData: {
         totalCases: this.state.countries[country].TotalConfirmed,
-        data: {
-          datasets: [
-            {
-              data: [
-                this.state.countries[country].TotalDeaths,
+        datasets: [
+          {
+            data: [
+              this.state.countries[country].TotalDeaths,
+              this.state.countries[country].TotalRecovered,
+              this.state.countries[country].TotalConfirmed -
+                this.state.countries[country].TotalDeaths -
                 this.state.countries[country].TotalRecovered,
-                this.state.countries[country].TotalConfirmed -
-                  this.state.countries[country].TotalDeaths -
-                  this.state.countries[country].TotalRecovered,
-              ],
-              backgroundColor: ['#CB5C5C', '#69D274', '#DEDB71'],
-            },
-          ],
+            ],
+            backgroundColor: ['#CB5C5C', '#69D274', '#DEDB71'],
+          },
+        ],
 
-          labels: ['Total deaths', 'Total recovered', 'Active'],
-        },
+        labels: ['Total deaths', 'Total recovered', 'Active'],
       },
     });
   };
@@ -72,8 +74,8 @@ class App extends Component {
             onCountryChoice={this.handleCountryChoice}
           />
           <Doughnut
-            data={this.state.doughnutData.data}
-            totalCases={this.state.doughnutData.totalCases}
+            data={this.state.doughnutData}
+            // totalCases={this.state.doughnutData.totalCases}
           />
         </div>
       );

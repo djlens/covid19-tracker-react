@@ -22,17 +22,27 @@ class CountryItem extends Component {
   //   );
   // };
 
+  renderFlag = () => {
+    return this.props.countryCode ? (
+      <ReactCountryFlag
+        style={{ marginLeft: '0.5em' }}
+        className="emojiFlag"
+        countryCode={this.props.countryCode}
+      />
+    ) : (
+      <span aria-label="globe_emoji" style={{ marginLeft: '0.5em' }} role="img">
+        🌍
+      </span>
+    );
+  };
+
   render() {
     return (
       <li onClick={() => this.props.onCountryChoice(this.props.index)}>
         <div className={styles.country__item}>
           <div>
             {this.props.countryName}
-            <ReactCountryFlag
-              style={{ marginLeft: '0.5em' }}
-              className="emojiFlag"
-              countryCode={this.props.countryCode}
-            />
+            {this.renderFlag()}
           </div>
           <span>{this.numberWithCommas(this.props.totalConfirmed)}</span>
         </div>
