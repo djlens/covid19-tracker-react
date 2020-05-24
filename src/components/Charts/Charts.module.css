@@ -1,0 +1,12 @@
+.charts .charts__country {
+    display: flex;
+    margin-top: 2em;
+    height: 9em;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.charts {
+    width: 90%;
+    margin-right: 2em;
+}

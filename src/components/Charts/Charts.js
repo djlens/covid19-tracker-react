@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import Doughnut from './Doughnut/DoughNut';
+import NewCases from './NewCases/NewCases';
+import CountryName from './CountryFlag/CountryFlag';
+import styles from './Charts.module.css';
 
 class Charts extends Component {
   handleTotalData = () => {
@@ -23,9 +26,30 @@ class Charts extends Component {
     return totalData;
   };
 
+  handleNewData = () => {
+    const newData = {
+      newConfirmed: this.props.countries[this.props.countryChoice].NewConfirmed,
+      newDeaths: this.props.countries[this.props.countryChoice].NewDeaths,
+      newRecovered: this.props.countries[this.props.countryChoice].NewRecovered,
+    };
+    return newData;
+  };
+
+  displayCountry = () => {
+    return {
+      countryCode: this.props.countries[this.props.countryChoice].CountryCode,
+      countryName: this.props.countries[this.props.countryChoice].Country,
+      countryInfo: this.props.countryInfo,
+    };
+  };
+
   render() {
     return (
-      <div className="charts">
+      <div className={styles.charts}>
+        <div className={styles.charts__country}>
+          <CountryName data={this.displayCountry()} />
+          <NewCases data={this.handleNewData()} />
+        </div>
         <Doughnut data={this.handleTotalData()} />
       </div>
     );

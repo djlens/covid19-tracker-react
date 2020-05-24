@@ -8,8 +8,10 @@ class Chart extends Component {
   render() {
     return (
       <div className={styles.chart}>
-        <Doughnut data={this.props.data} />
-        <p>{this.props.data.totalCases} confirmed</p>
+        <div>
+          <Doughnut data={this.props.data} />
+          <p>{this.props.data.totalCases} confirmed</p>
+        </div>
       </div>
     );
   }

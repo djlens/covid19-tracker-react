@@ -29,11 +29,7 @@ class CountryItem extends Component {
         className="emojiFlag"
         countryCode={this.props.countryCode}
       />
-    ) : (
-      <span aria-label="globe_emoji" style={{ marginLeft: '0.5em' }} role="img">
-        🌍
-      </span>
-    );
+    ) : null;
   };
 
   render() {
