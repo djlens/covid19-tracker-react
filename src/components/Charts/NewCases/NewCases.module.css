@@ -16,19 +16,19 @@
 }
 
 .newData .newDeaths span {
-    color: red;
+    color: #CB5C5C;
     font-weight: 700;
     font-size: 1.2em;
 }
 
 .newData .newCases span {
-    color: blue;
+    color: rgb(78, 78, 194);
     font-weight: 700;
     font-size: 1.2em;
 }
 
 .newData .newRecovered span {
-    color: green;
+    color: #69D274;
     font-weight: 700;
     font-size: 1.2em;
 }

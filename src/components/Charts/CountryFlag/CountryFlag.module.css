@@ -3,7 +3,7 @@
     border-radius: 7px;
     height: fit-content;
     width: fit-content;
-    padding: 1em;
+    padding: 1.5em;
     font-family: 'Montserrat', sans-serif;
     margin: 0;
     display: flex;
@@ -11,8 +11,12 @@
     flex: 3
 }
 
+.country div p {
+    margin-left: 1em;
+}
+
 .flag {
-    width: 12em;
+    width: 10em;
     margin-right: 1em;
 }
 
