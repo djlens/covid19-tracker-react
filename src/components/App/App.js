@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import CountryFinder from '../CountryFinder/CountryFinder';
-import Doughnut from '../Charts/DoughNut';
+import Doughnut from '../Charts/Doughnut/DoughNut';
 require('./App.css');
 
 class App extends Component {
@@ -73,10 +73,7 @@ class App extends Component {
             countries={this.state.countries}
             onCountryChoice={this.handleCountryChoice}
           />
-          <Doughnut
-            data={this.state.doughnutData}
-            // totalCases={this.state.doughnutData.totalCases}
-          />
+          <Doughnut data={this.state.doughnutData} />
         </div>
       );
     } else return null;
