@@ -1,4 +1,5 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a simple COVID-19 tracker app I've built with React.
+It's also my first React project.
 See it live: https://covid-19-trackerbycountry.netlify.app/
 
 ## Available Scripts
