@@ -5,21 +5,12 @@ import styles from './CountryFlag.module.css';
 class CountryName extends Component {
   state = {};
 
-  numberWithCommas = (number) => {
-    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-  };
-
   renderCountryInfo = () => {
     return (
       <div className={styles.countryInfo}>
         <p>Capital: {this.props.data.countryInfo.capital}</p>
-        <p>
-          Population:{' '}
-          {this.numberWithCommas(this.props.data.countryInfo.population)}
-        </p>
-        <p>
-          Area: {this.numberWithCommas(this.props.data.countryInfo.area)} km²
-        </p>
+        <p>Population: {this.props.data.countryInfo.population}</p>
+        <p>Area: {this.props.data.countryInfo.area} km²</p>
       </div>
     );
   };
@@ -37,9 +28,7 @@ class CountryName extends Component {
       <div className={styles.country}>
         {this.renderCountryFlag()}
         <div>
-          <p
-            style={{ fontSize: '1.2em', fontWeight: 700, marginBottom: '1em' }}
-          >
+          <p style={{ fontSize: '1.2em', fontWeight: 700, marginTop: 0 }}>
             {this.props.data.countryName}
           </p>
           {this.renderCountryInfo()}

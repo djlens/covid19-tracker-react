@@ -1,7 +1,7 @@
 .charts .charts__country {
     display: flex;
-    margin-top: 2em;
-    height: 9em;
+    align-items: center;
+    height: minmax(10em, fit-content);
     width: 100%;
     justify-content: space-between;
 }
@@ -9,4 +9,19 @@
 .charts {
     width: 90%;
     margin-right: 2em;
+}
+
+@media (max-width: 1150px) {
+    .charts {
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 800px) {
+    .charts .charts__country {
+        flex-direction: column;
+        height: fit-content;
+        width: 90%;
+        margin: 0 auto
+    }
 }

@@ -12,4 +12,13 @@ body {
 .app {
     display: flex;
     justify-content: flex-start;
+    align-items: center;
+    width: 90%;
+    margin: 0 auto;
+}
+
+@media (max-width: 1150px) {
+    .app {
+        flex-direction: column;
+    }
 }

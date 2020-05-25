@@ -8,11 +8,14 @@ class App extends Component {
     isLoading: true,
     countryChoice: 0,
     countryInfo: {
-      capital: 'Poland',
-      timezones: '-',
-      population: 7600000000,
-      area: 510100000,
+      capital: 'Poland 🇵🇱',
+      population: '7,600,000,000',
+      area: '510,100,000',
     },
+  };
+
+  numberWithCommas = (number) => {
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   };
 
   componentDidMount() {
@@ -71,9 +74,8 @@ class App extends Component {
             this.setState({
               countryInfo: {
                 capital: json.capital,
-                timezones: json.timezones,
-                population: json.population,
-                area: json.area,
+                population: this.numberWithCommas(json.population),
+                area: this.numberWithCommas(json.area),
                 flag: json.flag,
               },
             });
@@ -81,10 +83,10 @@ class App extends Component {
       } else {
         this.setState({
           countryInfo: {
-            capital: 'Poland',
+            capital: 'Poland 🇵🇱',
             timezones: '-',
-            population: 7600000000,
-            area: 510100000,
+            population: '7,600,000,000',
+            area: '510,100,000',
           },
         });
       }
