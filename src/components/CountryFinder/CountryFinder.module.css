@@ -36,12 +36,13 @@
 @media (max-width: 1150px) {
     .pannel {
         margin: 2em auto;
-        height: 40vh;
+        height: 50vh;
     }
 }
 
 @media (max-width: 800px) {
     .pannel {
-        width: 80%;
+        width: 90%;
+        height: 60vh;
     }
 }

@@ -17,3 +17,14 @@
     margin: 1em auto 0;
     font-size: 1.3em;
 }
+
+@media (max-width: 800px) {
+    .chart {
+        width: 100%;
+        margin: 2em auto;
+        padding: 1em 0;
+    }
+    .chart div {
+        width: 100%;
+    }
+}

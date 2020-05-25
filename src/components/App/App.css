@@ -20,5 +20,6 @@ body {
 @media (max-width: 1150px) {
     .app {
         flex-direction: column;
+        margin: 0 auto;
     }
 }
