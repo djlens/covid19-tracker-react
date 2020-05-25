@@ -3,6 +3,7 @@ import Doughnut from './Doughnut/DoughNut';
 import NewCases from './NewCases/NewCases';
 import CountryName from './CountryFlag/CountryFlag';
 import styles from './Charts.module.css';
+import LineChart from './LineChart/LineChart';
 
 class Charts extends Component {
   handleTotalData = () => {
@@ -43,6 +44,14 @@ class Charts extends Component {
     };
   };
 
+  renderChart = () => {
+    if (this.props.countryChoice > 0) {
+      return <Doughnut data={this.handleTotalData()} />;
+    } else {
+      return <LineChart data={this.props.lineData} />;
+    }
+  };
+
   render() {
     return (
       <div className={styles.charts}>
@@ -50,7 +59,7 @@ class Charts extends Component {
           <CountryName data={this.displayCountry()} />
           <NewCases data={this.handleNewData()} />
         </div>
-        <Doughnut data={this.handleTotalData()} />
+        {this.renderChart()}
       </div>
     );
   }

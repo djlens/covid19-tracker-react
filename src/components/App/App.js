@@ -8,10 +8,10 @@ class App extends Component {
     isLoading: true,
     countryChoice: 0,
     countryInfo: {
-      capital: '-',
+      capital: 'Poland',
       timezones: '-',
-      population: '-',
-      area: '-',
+      population: 7600000000,
+      area: 510100000,
     },
   };
 
@@ -31,6 +31,30 @@ class App extends Component {
         this.setState({
           countries: json.Countries,
           isLoading: false,
+        });
+      });
+    fetch('https://covid19.mathdro.id/api/daily')
+      .then((res) => res.json())
+      .then((json) => {
+        this.setState({
+          lineData: {
+            labels: json.map((json) => json.reportDate),
+            datasets: [
+              {
+                data: json.map((json) => json.confirmed.total),
+                label: 'Infected',
+                borderColor: '#3333ff',
+                fill: true,
+              },
+              {
+                data: json.map((json) => json.deaths.total),
+                label: 'Deaths',
+                borderColor: 'red',
+                backgroundColor: 'rgba(255, 0, 0, 0.5)',
+                fill: true,
+              },
+            ],
+          },
         });
       });
   }
@@ -57,10 +81,10 @@ class App extends Component {
       } else {
         this.setState({
           countryInfo: {
-            capital: '-',
+            capital: 'Poland',
             timezones: '-',
-            population: '-',
-            area: '-',
+            population: 7600000000,
+            area: 510100000,
           },
         });
       }
@@ -79,6 +103,7 @@ class App extends Component {
             countries={this.state.countries}
             countryChoice={this.state.countryChoice}
             countryInfo={this.state.countryInfo}
+            lineData={this.state.lineData}
           />
         </div>
       );
