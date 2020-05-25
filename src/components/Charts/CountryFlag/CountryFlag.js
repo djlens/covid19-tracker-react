@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import ReactCountryFlag from 'react-country-flag';
 import styles from './CountryFlag.module.css';
 
 class CountryName extends Component {

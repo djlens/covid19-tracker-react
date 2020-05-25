@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import CountryFinder from '../CountryFinder/CountryFinder';
 import Charts from '../Charts/Charts';
+import ErrorMessage from '../ErrorMessage/ErrorMessage';
+import { BoxLoading } from 'react-loadingg';
 require('./App.css');
 
 class App extends Component {
   state = {
-    isLoading: true,
+    errorOccured: false,
+    fetch1Ready: false,
+    fetch2Ready: false,
     countryChoice: 0,
     countryInfo: {
       capital: 'Poland 🇵🇱',
@@ -33,7 +37,12 @@ class App extends Component {
         });
         this.setState({
           countries: json.Countries,
-          isLoading: false,
+          fetch1Ready: true,
+        });
+      })
+      .catch((err) => {
+        this.setState({
+          errorOccured: true,
         });
       });
     fetch('https://covid19.mathdro.id/api/daily')
@@ -58,6 +67,12 @@ class App extends Component {
               },
             ],
           },
+          fetch2Ready: true,
+        });
+      })
+      .catch((err) => {
+        this.setState({
+          errorOccured: true,
         });
       });
   }
@@ -79,6 +94,11 @@ class App extends Component {
                 flag: json.flag,
               },
             });
+          })
+          .catch((err) => {
+            this.setState({
+              errorOccured: true,
+            });
           });
       } else {
         this.setState({
@@ -94,7 +114,7 @@ class App extends Component {
   };
 
   render() {
-    if (!this.state.isLoading) {
+    if (this.state.fetch1Ready && this.state.fetch2Ready) {
       return (
         <div className="app">
           <CountryFinder
@@ -109,7 +129,12 @@ class App extends Component {
           />
         </div>
       );
-    } else return null;
+    }
+    if (this.state.errorOccured) {
+      return <ErrorMessage />;
+    } else {
+      return <BoxLoading />;
+    }
   }
 }
 
