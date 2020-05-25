@@ -1,6 +1,6 @@
 .pannel {
     width: 50%;
-    margin: 2em;
+    /* margin: 2em; */
     padding: 2em;
     height: 90vh;
     border-radius: 7px;
@@ -36,6 +36,7 @@
 @media (max-width: 1150px) {
     .pannel {
         margin: 2em auto;
+        height: 40vh;
     }
 }
 

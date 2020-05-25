@@ -7,8 +7,12 @@
 }
 
 .charts {
+    margin-left: 2em;
     width: 90%;
-    margin-right: 2em;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 @media (max-width: 1150px) {
