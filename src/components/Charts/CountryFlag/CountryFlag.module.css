@@ -27,6 +27,7 @@ img {
 
 @media (max-width: 800px) {
     .country {
-        flex: 1
+        flex: 1;
+        width: 100%;
     }
 }
