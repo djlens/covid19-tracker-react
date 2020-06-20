@@ -1,27 +1,9 @@
 import React, { Component } from 'react';
 import styles from './CountryItem.module.css';
 import ReactCountryFlag from 'react-country-flag';
+import numberWithCommas from '../../functions/numberWithCommas';
 
 class CountryItem extends Component {
-  state = { showStats: false };
-
-  numberWithCommas = (number) => {
-    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-  };
-
-  // renderName = () => {
-  //   return (
-  //     <span>
-  //       {this.props.info.Country.replace(
-  //         this.props.inputValue,
-  //         <span className="country__item--highlight">
-  //           {this.props.inputValue}
-  //         </span>
-  //       )}
-  //     </span>
-  //   );
-  // };
-
   renderFlag = () => {
     return this.props.countryCode ? (
       <ReactCountryFlag
@@ -40,7 +22,7 @@ class CountryItem extends Component {
             {this.props.countryName}
             {this.renderFlag()}
           </div>
-          <span>{this.numberWithCommas(this.props.totalConfirmed)}</span>
+          <span>{numberWithCommas(this.props.totalConfirmed)}</span>
         </div>
       </li>
     );

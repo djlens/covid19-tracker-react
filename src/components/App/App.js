@@ -3,6 +3,7 @@ import CountryFinder from '../CountryFinder/CountryFinder';
 import Charts from '../Charts/Charts';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import { BoxLoading } from 'react-loadingg';
+import numberWithCommas from '../../functions/numberWithCommas';
 require('./App.css');
 
 class App extends Component {
@@ -16,10 +17,6 @@ class App extends Component {
       population: '7,600,000,000',
       area: '510,100,000',
     },
-  };
-
-  numberWithCommas = (number) => {
-    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   };
 
   componentDidMount() {
@@ -89,16 +86,14 @@ class App extends Component {
             this.setState({
               countryInfo: {
                 capital: json.capital,
-                population: this.numberWithCommas(json.population),
-                area: this.numberWithCommas(json.area),
+                population: numberWithCommas(json.population),
+                area: numberWithCommas(json.area),
                 flag: json.flag,
               },
             });
           })
           .catch((err) => {
-            this.setState({
-              errorOccured: true,
-            });
+            console.log(err.message);
           });
       } else {
         this.setState({
