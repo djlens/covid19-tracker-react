@@ -3,29 +3,14 @@ import CountryItem from '../CountryItem/CountryItem';
 import styles from './CountryList.module.css';
 
 class CountryList extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      renderedCountries: props.renderedCountries,
-      inputValue: props.inputValue,
-    };
-  }
-
-  static getDerivedStateFromProps = (newProps) => {
-    return {
-      renderedCountries: newProps.renderedCountries,
-      inputValue: newProps.inputValue,
-    };
-  };
-
   renderCountries = () => {
-    return this.state.renderedCountries.map((c) => {
+    return this.props.renderedCountries.map((c) => {
       return (
         <CountryItem
-          key={this.state.renderedCountries.indexOf(c) + 1}
+          key={this.props.renderedCountries.indexOf(c) + 1}
           countryName={c.Country}
           totalConfirmed={c.TotalConfirmed}
-          inputValue={this.state.inputValue}
+          inputValue={this.props.inputValue}
           countryCode={c.CountryCode}
           onCountryChoice={this.props.onCountryChoice}
           index={c.index}
