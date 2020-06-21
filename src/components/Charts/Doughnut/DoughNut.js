@@ -2,7 +2,7 @@ import React from 'react';
 import { Doughnut } from 'react-chartjs-2';
 import styles from './DoughNut.module.css';
 
-function Chart(props) {
+const Chart = (props) => {
   return (
     <div className={styles.chart}>
       <div>
@@ -11,6 +11,6 @@ function Chart(props) {
       </div>
     </div>
   );
-}
+};
 
 export default Chart;
