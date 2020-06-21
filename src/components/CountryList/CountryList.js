@@ -19,7 +19,7 @@ class CountryList extends Component {
     });
   };
 
-  render() {
+  renderContent = () => {
     return this.renderCountries().length === 0 ? (
       <ul className={styles.country__list}>
         <li style={{ marginTop: '1em', paddingLeft: '1.5em' }}>No matches</li>
@@ -27,6 +27,10 @@ class CountryList extends Component {
     ) : (
       <ul className={styles.country__list}>{this.renderCountries()}</ul>
     );
+  };
+
+  render() {
+    return <div>{this.renderContent()}</div>;
   }
 }
 
