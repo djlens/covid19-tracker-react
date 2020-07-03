@@ -1,9 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class ErrorMessage extends Component {
-  render() {
-    return <p>Something went wrong. Please try reloading the page</p>;
-  }
-}
+const ErrorMessage = () => {
+  return <p>Something went wrong. Please try reloading the page</p>;
+};
 
 export default ErrorMessage;
