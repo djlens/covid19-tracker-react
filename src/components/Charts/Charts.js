@@ -1,22 +1,22 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Doughnut from './Doughnut/DoughNut';
 import NewCases from './NewCases/NewCases';
 import CountryName from './CountryFlag/CountryFlag';
 import styles from './Charts.module.css';
 import LineChart from './LineChart/LineChart';
 
-class Charts extends Component {
-  handleTotalData = () => {
+const Charts = (props) => {
+  const handleTotalData = () => {
     const totalData = {
-      totalCases: this.props.countries[this.props.countryChoice].TotalConfirmed,
+      totalCases: props.countries[props.countryChoice].TotalConfirmed,
       datasets: [
         {
           data: [
-            this.props.countries[this.props.countryChoice].TotalDeaths,
-            this.props.countries[this.props.countryChoice].TotalRecovered,
-            this.props.countries[this.props.countryChoice].TotalConfirmed -
-              this.props.countries[this.props.countryChoice].TotalDeaths -
-              this.props.countries[this.props.countryChoice].TotalRecovered,
+            props.countries[props.countryChoice].TotalDeaths,
+            props.countries[props.countryChoice].TotalRecovered,
+            props.countries[props.countryChoice].TotalConfirmed -
+              props.countries[props.countryChoice].TotalDeaths -
+              props.countries[props.countryChoice].TotalRecovered,
           ],
           backgroundColor: ['#CB5C5C', '#69D274', '#DEDB71'],
         },
@@ -27,42 +27,40 @@ class Charts extends Component {
     return totalData;
   };
 
-  handleNewData = () => {
+  const handleNewData = () => {
     const newData = {
-      newConfirmed: this.props.countries[this.props.countryChoice].NewConfirmed,
-      newDeaths: this.props.countries[this.props.countryChoice].NewDeaths,
-      newRecovered: this.props.countries[this.props.countryChoice].NewRecovered,
+      newConfirmed: props.countries[props.countryChoice].NewConfirmed,
+      newDeaths: props.countries[props.countryChoice].NewDeaths,
+      newRecovered: props.countries[props.countryChoice].NewRecovered,
     };
     return newData;
   };
 
-  displayCountry = () => {
+  const displayCountry = () => {
     return {
-      countryCode: this.props.countries[this.props.countryChoice].CountryCode,
-      countryName: this.props.countries[this.props.countryChoice].Country,
-      countryInfo: this.props.countryInfo,
+      countryCode: props.countries[props.countryChoice].CountryCode,
+      countryName: props.countries[props.countryChoice].Country,
+      countryInfo: props.countryInfo,
     };
   };
 
-  renderChart = () => {
-    if (this.props.countryChoice > 0) {
-      return <Doughnut data={this.handleTotalData()} />;
+  const renderChart = () => {
+    if (props.countryChoice > 0) {
+      return <Doughnut data={handleTotalData()} />;
     } else {
-      return <LineChart data={this.props.lineData} />;
+      return <LineChart data={props.lineData} />;
     }
   };
 
-  render() {
-    return (
-      <div className={styles.charts}>
-        <div className={styles.charts__country}>
-          <CountryName data={this.displayCountry()} />
-          <NewCases data={this.handleNewData()} />
-        </div>
-        {this.renderChart()}
+  return (
+    <div className={styles.charts}>
+      <div className={styles.charts__country}>
+        <CountryName data={displayCountry()} />
+        <NewCases data={handleNewData()} />
       </div>
-    );
-  }
-}
+      {renderChart()}
+    </div>
+  );
+};
 
 export default Charts;

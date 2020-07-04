@@ -1,51 +1,48 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import CountryList from '../CountryList/CountryList';
 import styles from './CountryFinder.module.css';
 
-class CountryFinder extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      renderedCountries: props.countries.map((country, index) => {
-        country.index = index;
-        return country;
-      }),
-      inputValue: '',
-    };
-  }
+const CountryFinder = (props) => {
+  const [renderedCountries, setRenderedCountries] = useState(
+    props.countries.map((country, index) => {
+      country.index = index;
+      return country;
+    })
+  );
 
-  handleChange = (event) => {
-    this.setState({ inputValue: event.target.value }, this.findCountries);
+  const [inputValue, setInputValue] = useState('');
+
+  const handleChange = (event) => {
+    setInputValue(event.target.value);
+    findCountries();
   };
 
-  findCountries = () => {
-    const filteredCountries = this.props.countries.filter((country) => {
-      const exp = new RegExp(this.state.inputValue, 'gi');
+  const findCountries = () => {
+    const filteredCountries = props.countries.filter((country) => {
+      const exp = new RegExp(inputValue, 'gi');
       return country.Country.match(exp);
     });
-    this.setState({ renderedCountries: filteredCountries });
+    setRenderedCountries(filteredCountries);
   };
 
-  render() {
-    return (
-      <div className={styles.pannel}>
-        <input
-          className={styles.pannel__finder}
-          type="text"
-          value={this.state.inputValue}
-          placeholder="Find a country"
-          onChange={this.handleChange}
+  return (
+    <div className={styles.pannel}>
+      <input
+        className={styles.pannel__finder}
+        type="text"
+        value={inputValue}
+        placeholder="Find a country"
+        onChange={handleChange}
+      />
+      <div className={styles.pannel__list}>
+        <CountryList
+          renderedCountries={renderedCountries}
+          inputValue={inputValue}
+          onCountryChoice={props.onCountryChoice}
         />
-        <div className={styles.pannel__list}>
-          <CountryList
-            renderedCountries={this.state.renderedCountries}
-            inputValue={this.state.inputValue}
-            onCountryChoice={this.props.onCountryChoice}
-          />
-        </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default CountryFinder;
